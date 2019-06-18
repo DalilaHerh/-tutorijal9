@@ -1,4 +1,4 @@
-ppackage ba.unsa.etf.rs.tutorijal8;
+package ba.unsa.etf.rs.tutorijal8;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
