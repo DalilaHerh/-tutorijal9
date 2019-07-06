@@ -1,105 +1,124 @@
 package ba.unsa.etf.rs.tutorijal8;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Bus {
-    private int id;
-    private String proizvodjac;
-    private String serija;
-    private int numberOfSeats;
-    private int numberOfDrivers;
-    private Driver FirstDriver = null;
-    private Driver SecondDriver = null;
+    private SimpleIntegerProperty id = new SimpleIntegerProperty();
+    private SimpleStringProperty Maker = new SimpleStringProperty();
+    private SimpleStringProperty serija = new SimpleStringProperty();
+    private SimpleIntegerProperty SeatNumber = new SimpleIntegerProperty();
+    private SimpleIntegerProperty numberOfDrivers = new SimpleIntegerProperty();
+    private SimpleIntegerProperty DriverOne = new SimpleIntegerProperty();
+    private SimpleIntegerProperty SecondDriver = new SimpleIntegerProperty();
 
-    public void setFirstDriver(Driver firstDriver) {
-        FirstDriver = firstDriver;
+    public Bus(Integer id, String proizvodjac, String serija, Integer numberOfSeats, Integer numberOfDrivers, Integer firstDriver, Integer secondDriver) {
+        this.id.set(id);
+        this.Maker.set(proizvodjac);
+        this.serija.set(serija);
+        this.SeatNumber.set(numberOfSeats);
+        this.numberOfDrivers.set(numberOfDrivers);
+        DriverOne.set(firstDriver);
+        SecondDriver.set(secondDriver);
     }
 
-    public void setSecondDriver(Driver secondDriver) {
-        SecondDriver = secondDriver;
+    public Bus(String proizvodjac, String serija, int brojSjedista) {
+        this.Maker.set(proizvodjac);
+        this.serija.set(serija);
+        this.SeatNumber.set(brojSjedista);
     }
 
-    public Bus(){ }
+    public Bus() {
 
-    public Bus(String proizvodjac, String serija, int numberOfSeats) {
-        this.proizvodjac = proizvodjac;
-        this.serija = serija;
-        this.numberOfSeats = numberOfSeats;
-    }
-
-    public Bus( int Id, String proizvodjac, String serija, int numberOfSeats) {
-        id = Id;
-        this.proizvodjac = proizvodjac;
-        this.serija = serija;
-        this.numberOfSeats = numberOfSeats;
-
-    }
-    public Bus(int Id, String proizvodjac, String serija, int numberOfSeats, Driver firstDriver, Driver secondDriver) {
-        id = Id;
-        this.proizvodjac = proizvodjac;
-        this.serija = serija;
-        this.numberOfSeats = numberOfSeats;
-
-        FirstDriver = firstDriver;
-        SecondDriver = secondDriver;
     }
 
     public int getId() {
+        return id.get();
+    }
+
+    public SimpleIntegerProperty idProperty() {
         return id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.id.set(id);
     }
 
     public String getMaker() {
-        return proizvodjac;
+        return Maker.get();
     }
 
-    public void setProizvodjac(String proizvodjac) {
-        this.proizvodjac = proizvodjac;
+    public SimpleStringProperty makerProperty() {
+        return Maker;
+    }
+
+    public void setMaker(String maker) {
+        this.Maker.set(maker);
     }
 
     public String getSerija() {
+        return serija.get();
+    }
+
+    public SimpleStringProperty serijaProperty() {
         return serija;
     }
 
     public void setSerija(String serija) {
-        this.serija = serija;
+        this.serija.set(serija);
     }
 
     public int getSeatNumber() {
-        return numberOfSeats;
+        return SeatNumber.get();
     }
 
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
+    public SimpleIntegerProperty seatNumberProperty() {
+        return SeatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.SeatNumber.set(seatNumber);
     }
 
     public int getNumberOfDrivers() {
+        return numberOfDrivers.get();
+    }
+
+    public SimpleIntegerProperty numberOfDriversProperty() {
         return numberOfDrivers;
     }
 
     public void setNumberOfDrivers(int numberOfDrivers) {
-        this.numberOfDrivers = numberOfDrivers;
+        this.numberOfDrivers.set(numberOfDrivers);
     }
 
-    public Driver getDriverOne() {
-        return FirstDriver;
+    public int getDriverOne() {
+        return DriverOne.get();
     }
 
-    public Driver getDriverTwo() {
+    public SimpleIntegerProperty DriverOneProperty() {
+        return DriverOne;
+    }
+
+    public void setDriverOne(int firstDriver) {
+        this.DriverOne.set(firstDriver);
+    }
+
+    public int getSecondDriver() {
+        return SecondDriver.get();
+    }
+
+    public SimpleIntegerProperty secondDriverProperty() {
         return SecondDriver;
     }
 
+    public void setSecondDriver(int secondDriver) {
+        this.SecondDriver.set(secondDriver);
+    }
+
+
     @Override
     public String toString() {
-        String ispisBusa = "";
-        ispisBusa += this.proizvodjac + " " + this.serija + " ( seats: " + this.getSeatNumber() + " )";
-        if (FirstDriver != null) {
-            ispisBusa += FirstDriver.toString();
-        }
-        if (SecondDriver != null) {
-            ispisBusa += SecondDriver.toString();
-        }
-        return ispisBusa;
+        return Maker +" "+serija ;
     }
 }

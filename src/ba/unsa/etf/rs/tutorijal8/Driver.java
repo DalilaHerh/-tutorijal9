@@ -1,94 +1,108 @@
 package ba.unsa.etf.rs.tutorijal8;
 
-import java.sql.Date;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Driver {
-    private int id;
-    private String Ime;
-    private String Prezime;
-    private String JMB;
-    private LocalDate BirthDate;
-    private LocalDate WorkDate;
+    private SimpleIntegerProperty id = new SimpleIntegerProperty();
+    private SimpleStringProperty Name = new SimpleStringProperty("");
+    private SimpleStringProperty Prezime= new SimpleStringProperty("");;
+    private SimpleStringProperty JMB= new SimpleStringProperty("");;
+    private SimpleObjectProperty<LocalDate> Birthday = new SimpleObjectProperty<>();
+    private SimpleObjectProperty<LocalDate> WorkDate= new SimpleObjectProperty<>();
+
+    public Driver(String ime, String prezime, String JMB, LocalDate birthDate, LocalDate workDate) {
+        Name.set(ime);
+        Prezime.set(prezime);
+        this.JMB.set(JMB);
+        Birthday.set(birthDate);
+        WorkDate.set(workDate);
+    }
+
 
     public Driver() { }
 
-    public Driver(String ime, String prezime, String JMB, LocalDate birthDate, LocalDate workDate) {
-        this.Ime = ime;
-        Prezime = prezime;
-        this.JMB = JMB;
-        BirthDate = birthDate;
-        WorkDate = workDate;
-    }
 
-    public Driver(int id , String ime, String prezime, String JMB, LocalDate birthDate, LocalDate workDate) {
-        this.id = id;
-        this.Ime = ime;
-        Prezime = prezime;
-        this.JMB = JMB;
-        BirthDate = birthDate;
-        WorkDate = workDate;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
-        return Ime;
+        return Name.get();
     }
 
-    public void setIme(String ime) {
-        Ime = ime;
+    public SimpleStringProperty nameProperty() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        this.Name.set(name);
     }
 
     public String getPrezime() {
+        return Prezime.get();
+    }
+
+    public SimpleStringProperty prezimeProperty() {
         return Prezime;
     }
 
     public void setPrezime(String prezime) {
-        Prezime = prezime;
+        this.Prezime.set(prezime);
     }
 
     public String getJMB() {
+        return JMB.get();
+    }
+
+    public SimpleStringProperty JMBProperty() {
         return JMB;
     }
 
     public void setJMB(String JMB) {
-        this.JMB = JMB;
+        this.JMB.set(JMB);
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public SimpleIntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
     }
 
     public LocalDate getBirthday() {
-        return BirthDate;
+        return Birthday.get();
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        BirthDate = birthDate;
+    public SimpleObjectProperty<LocalDate> birthdayProperty() {
+        return Birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.Birthday.set(birthday);
     }
 
     public LocalDate getWorkDate() {
+        return WorkDate.get();
+    }
+
+    public SimpleObjectProperty<LocalDate> workDateProperty() {
         return WorkDate;
     }
 
     public void setWorkDate(LocalDate workDate) {
-        WorkDate = workDate;
+        this.WorkDate.set(workDate);
     }
 
     @Override
     public String toString() {
-        return  " - (" + this.getName() + " " + this.getPrezime() + " ( " + this.getJMB() + " ))";
+        return  Name + " " + Prezime ;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Driver)) return false;
-        Driver driver = (Driver) o;
-        return Objects.equals(getJMB(), driver.getJMB());
-    }
+
 }
